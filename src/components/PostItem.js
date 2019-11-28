@@ -1,5 +1,6 @@
 import React from 'react'
 
+import propTypes from 'prop-types';
 
 
 function HeaderPost({  name, avatar, date }) {
@@ -49,12 +50,46 @@ function PostItem ({ author, date, content, comments}) {
       {HeaderPost({...author, date})}
       
       <p className="post-content">{content}</p>
+
+      <div className="line-divisor"></div>
       
       {Comments(comments)}
       
     </li>
     
   );
+}
+
+/**
+ * Default props
+ */
+PostItem.defaultProps = {
+  author: {
+    name: "Julio Alcantara",
+    avatar: '../assets/user-logo.svg',
+  },
+  date: "04 Jun 2019",
+  content: "Pessoal, alguém sabe se a Rocketseat está contratando?",
+  comments: [
+    {
+      id: 1,
+      author: {
+        name: "Diego Fernandes",
+        avatar: "https://avatars2.githubusercontent.com/u/2254731?v=4"
+      },
+      content: "A Rocketseat está sempre em busca de novos membros, geralmente ficamos de olho nos alunos que se destacam no bootcamp, inclusive 80% dos nossos devs são ex-alunos"
+    }
+  ]
+}
+
+/**
+ * Prop-types
+ */
+PostItem.propTypes = {
+  author: propTypes.object,
+  date: propTypes.string,
+  content: propTypes.string,
+  comements: propTypes.array,
 }
 
 
